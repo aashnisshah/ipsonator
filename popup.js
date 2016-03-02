@@ -1,5 +1,12 @@
 var settings = [
 	{
+		api: 'https://ponyipsum.com/api/?type=all-pony&paras=10&start-with-lorem=1',
+		name: "Pony Ipsum",
+		url: "https://ponyipsum.com/",
+		type: "json",
+		process: 'concatall'
+	},
+	{
 		api: 'http://hipsterjesus.com/api/?paras=10&html=false',
 		name: "Hipster Jesus",
 		url: "http://hipsterjesus.com/",

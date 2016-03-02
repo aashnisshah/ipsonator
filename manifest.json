@@ -15,9 +15,6 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "http://api.whatthetrend.com/*",
-    "http://api.whatthetrend.com/api/v2/trends.json",
-    "http://api.whatthetrend.com/api/v2/trends/locations/top.json?place_type_code=12"
   ],
   "optional_permissions": ["tabs"]
 }
