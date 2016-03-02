@@ -50,6 +50,16 @@ function display(ipsum) {
 		var ipsumText = document.getElementById('ipsum-text');
 		ipsumText.innerText = 'Error';
 	}
+
+	// copy ipsum text easily:
+
+	var textareaButton = document.querySelector('.js-textareacutbtn');
+
+	textareaButton.addEventListener('click', function(event) {  
+	  var textToCopy = document.getElementById('ipsum-text');  
+	  textToCopy.select();
+	  document.execCommand('copy');  
+	});
 }
 
 function concatipsum(ipsum) {
