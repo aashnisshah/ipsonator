@@ -31,11 +31,13 @@ var settings = [
 	}
 ]
 
+var selected_ipsum = 0
+
 document.addEventListener('DOMContentLoaded', function() {
 	// select which ipsum text type to use
-
+	selected_ipsum = Math.floor(Math.random() * (settings.length));
 	// get text then display it
-	var ipsum = GET(settings[0].api);
+	var ipsum = GET(settings[selected_ipsum].api);
 });
 
 /* this function performs get calls
@@ -66,8 +68,8 @@ function display(ipsum) {
 		}
 
 		var ipsumLink = document.getElementById('ipsum-link');
-		ipsumLink.innerHTML = settings[0].name;
-		ipsumLink.href = settings[0].url;
+		ipsumLink.innerHTML = settings[selected_ipsum].name;
+		ipsumLink.href = settings[selected_ipsum].url;
 	} else {
 		var ipsumText = document.getElementById('ipsum-text');
 		ipsumText.innerText = 'Error';
@@ -86,13 +88,13 @@ function display(ipsum) {
 
 function processIpsum(ipsum) {
 	var newipsum = '';
-	if(settings[0].process == 'concatall') {
+	if(settings[selected_ipsum].process == 'concatall') {
 		newipsum = ipsum.join(" ");
 		return newipsum;
 	}
 
-	if(settings[0].process == 'extract') {
-		newipsum = ipsum[settings[0].processExtract];
+	if(settings[selected_ipsum].process == 'extract') {
+		newipsum = ipsum[settings[selected_ipsum].processExtract];
 		var newNoStartP = newipsum.replace(/<p>/g, "");
 		var newNoP = newNoStartP.replace(/<\/p>/g, "");
 		return newNoP;
