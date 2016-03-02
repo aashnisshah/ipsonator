@@ -37,7 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	// select which ipsum text type to use
 	selected_ipsum = Math.floor(Math.random() * (settings.length));
 	// get text then display it
-	var ipsum = GET(settings[selected_ipsum].api);
+	if(settings[selected_ipsum]) {
+		var ipsum = GET(settings[selected_ipsum].api);
+	} else {
+		var ipsumText = document.getElementById('ipsum-text');
+		ipsumText.innerText = 'Problems Generating Ipsum Text';
+	}
 });
 
 /* this function performs get calls
@@ -62,9 +67,6 @@ function display(ipsum) {
 		if(ipsum) {
 			var ipsumText = document.getElementById('ipsum-text');
 			ipsumText.innerText = processIpsum(ipsum);
-		} else {
-			var ipsumText = document.getElementById('ipsum-text');
-			ipsumText.innerText = 'Problems Generating Ipsum Text';
 		}
 
 		var ipsumLink = document.getElementById('ipsum-link');
