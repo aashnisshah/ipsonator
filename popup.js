@@ -3,7 +3,7 @@ var settings = [
 		api: 'https://baconipsum.com/api/?type=all-meat&paras=10&start-with-lorem=1',
 		name: "Bacon Ipsum",
 		url: 'http://baconipsum.com/',
-		type: 'get'
+		type: 'json'
 	}
 ]
 
