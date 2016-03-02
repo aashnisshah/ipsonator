@@ -1,5 +1,13 @@
 var settings = [
 	{
+		api: 'http://hipsterjesus.com/api/?paras=10&html=false',
+		name: "Hipster Jesus",
+		url: "http://hipsterjesus.com/",
+		type: "get",
+		process: 'extract',
+		processExtract: 'text'
+	},
+	{
 		api: 'http://www.randomtext.me/api/lorem/p-10/',
 		name: "Random Text",
 		url: "http://www.randomtext.me/",
