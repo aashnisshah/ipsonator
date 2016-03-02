@@ -1,9 +1,18 @@
 var settings = [
 	{
+		api: 'http://www.randomtext.me/api/lorem/p-10/',
+		name: "Random Text",
+		url: "http://www.randomtext.me/",
+		type: "get",
+		process: 'extract',
+		processExtract: 'text_out'
+	},
+	{
 		api: 'https://baconipsum.com/api/?type=all-meat&paras=10&start-with-lorem=1',
 		name: "Bacon Ipsum",
 		url: 'http://baconipsum.com/',
-		type: 'json'
+		type: 'json',
+		process: 'concatall'
 	}
 ]
 
@@ -24,8 +33,6 @@ function GET(url) {
 	    var json = xhr.responseText;                         // Response
 	    json = json.replace(/^[^(]*\(([\S\s]+)\);?$/, '$1'); // Turn JSONP in JSON
 	    json = JSON.parse(json);                             // Parse JSON
-	    
-		console.log(json);
 		display(json);
 	};
 }
@@ -37,7 +44,7 @@ function display(ipsum) {
 	if(ipsum) {
 		if(ipsum) {
 			var ipsumText = document.getElementById('ipsum-text');
-			ipsumText.innerText = concatipsum(ipsum);
+			ipsumText.innerText = processIpsum(ipsum);
 		} else {
 			var ipsumText = document.getElementById('ipsum-text');
 			ipsumText.innerText = 'Problems Generating Ipsum Text';
@@ -62,9 +69,19 @@ function display(ipsum) {
 	});
 }
 
-function concatipsum(ipsum) {
-	var newipsum = ipsum.join(" ");
-	return newipsum;
+function processIpsum(ipsum) {
+	var newipsum = '';
+	if(settings[0].process == 'concatall') {
+		newipsum = ipsum.join(" ");
+		return newipsum;
+	}
+
+	if(settings[0].process == 'extract') {
+		newipsum = ipsum[settings[0].processExtract];
+		var newNoStartP = newipsum.replace(/<p>/g, "");
+		var newNoP = newNoStartP.replace(/<\/p>/g, "");
+		return newNoP;
+	}
 }
 
 /* this eventListener allows us to create a new tab when we click on 
