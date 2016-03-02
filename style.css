@@ -1,0 +1,30 @@
+body {
+  background: #F2F2F1;
+  min-width: 500px;
+  text-align: left;
+  font-size: 18px;
+  padding: 10px;
+  color: #3D3C37;
+}
+
+a {
+  color: #8C8D85;
+}
+
+h2 {
+  color: #AA162C;
+}
+
+h1 {
+	color: #AA162C;
+}
+
+textarea {
+	width: 460px;
+	height: 400px;
+	border: 3px solid #AA162C;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-color: #F2F2F1;
+	font-size: 16px;
+}
